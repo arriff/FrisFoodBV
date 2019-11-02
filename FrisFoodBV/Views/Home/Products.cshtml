@@ -1,5 +1,7 @@
 ﻿@model List<FrisFoodBV.Models.ProductModel>
 @{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
     ViewBag.Title = "Products";
 }
 
@@ -9,16 +11,16 @@
         <th>product_id</th>
         <th>product_naam</th>
         <th>product_merk</th>
-        <th>vestiging</th>
+        <th>voorraad per vestiging</th>
     </tr>
     @foreach (var product in Model)
     {
-    <tr>
-        <td>@product.Id</td>
-        <td>@product.Naam</td>
-        <td>@product.Merk</td>
-        <td>@Html.ActionLink("Stores", "Stock", new { productId = product.Id })</td>
-    </tr>
+        <tr>
+            <td>@product.Id</td>
+            <td>@product.Naam</td>
+            <td>@product.Merk</td>
+            <td>@Html.ActionLink("Stock", "Stock", new { productId = product.Id })</td>
+        </tr>
     }
 
 </table>
