@@ -1,0 +1,24 @@
+﻿@model List<FrisFoodBV.Models.StockModel>
+@{
+    ViewBag.Title = "Stock";
+}
+
+<br />
+<h3>Product Naam: @ViewBag.ProductNaam</h3>
+<h3>Product Merk: @ViewBag.ProductMerk</h3>
+<table border="1">
+    <tr>
+        <th>vestiging</th>
+        <th>product_id</th>
+        <th>aantal</th>
+    </tr>
+    @foreach (var s in Model)
+    {
+        <tr>
+            <td>@s.VestigingId</td>
+            <td>@s.ProductId</td>
+            <td>@s.VoorraadAantal</td>
+        </tr>
+    }
+
+</table>

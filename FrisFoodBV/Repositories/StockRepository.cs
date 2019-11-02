@@ -7,20 +7,20 @@ using FrisFoodBV.Models;
 
 namespace FrisFoodBV.Repositories
 {
-    public class VoorraadRepository
+    public class StockRepository
     {
         FrisFoodEntities context = new FrisFoodEntities();
 
-        public List<VoorraadModel> GetAllStock()
+        public List<StockModel> GetAllStock()
         {
-            return context.voorraads.Select(v => new VoorraadModel
+            return context.voorraads.Select(v => new StockModel
             {
                 VestigingId = v.vestiging_id,
                 ProductId = v.product_id,
                 VoorraadAantal = v.aantal.Value
             }).ToList();
         }
-        public List<VoorraadModel> GetStock(int productID)
+        public List<StockModel> GetStock(int productID)
         {
            var totaleVoorraad = GetAllStock();
 

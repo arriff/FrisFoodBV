@@ -1,6 +1,6 @@
 ﻿@model List<FrisFoodBV.Models.ProductModel>
 @{
-    ViewBag.Title = "Producten";
+    ViewBag.Title = "Products";
 }
 
 <br />
@@ -17,7 +17,7 @@
         <td>@product.Id</td>
         <td>@product.Naam</td>
         <td>@product.Merk</td>
-        <td>@Html.ActionLink("vestigingen", "ProductPerVestiging", new { productId = product.Id })</td>
+        <td>@Html.ActionLink("Stores", "Stock", new { productId = product.Id })</td>
     </tr>
     }
 

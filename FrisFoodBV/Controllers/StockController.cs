@@ -7,9 +7,10 @@ using System.Web.Mvc;
 
 namespace FrisFoodBV.Controllers
 {
-    public class VoorraadController : Controller
+    public class StockController : Controller
     {
-        VoorraadRepository repo = new VoorraadRepository();
+        StockRepository repoX = new StockRepository();
+
 
     }
 }

@@ -10,7 +10,7 @@ namespace FrisFoodBV.Controllers
     public class HomeController : Controller
     {
         ProductRepository repo = new ProductRepository();
-        VoorraadRepository repoX = new VoorraadRepository();
+        StockRepository repoX = new StockRepository();
         public ActionResult Index()
         {
             return View();
@@ -30,18 +30,20 @@ namespace FrisFoodBV.Controllers
             return View();
         }
 
-        public ActionResult Producten()
+        public ActionResult Products()
         {
             var producten = repo.GetAllProducts();
 
             return View(producten);
         }
-        public ActionResult ProductPerVestiging(int productID)
-        {
 
+        public ActionResult Stock(int productID)
+        {
             var stock = repoX.GetStock(productID);
-            ViewBag.ProductNaam = "ProductNaam";
+            ViewBag.ProductNaam = repo.GetProductNameById(productID);
+            ViewBag.ProductMerk = repo.GetProductBrandById(productID);
             return View(stock);
         }
+
     }
 }

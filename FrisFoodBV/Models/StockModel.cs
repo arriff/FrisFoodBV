@@ -6,7 +6,7 @@ using System.Web;
 namespace FrisFoodBV.Models
 {
     
-    public class VoorraadModel
+    public class StockModel
     {
         public int VestigingId { get; set; }
         public int ProductId { get; set; }

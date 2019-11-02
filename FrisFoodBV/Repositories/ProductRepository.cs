@@ -20,6 +20,16 @@ namespace FrisFoodBV.Repositories
             }).ToList(); 
         }
 
+        public string GetProductNameById(int productID)
+        {
+            var producten = GetAllProducts();
+            return producten.First(p => p.Id == productID).Naam;
+        }
 
+        public string GetProductBrandById(int productID)
+        {
+            var producten = GetAllProducts();
+            return producten.First(p => p.Id == productID).Merk;
+        }
     }
 }
