@@ -1,0 +1,11 @@
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\DataModel.dll.config
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\DataModel.dll
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\DataModel.pdb
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\EntityFramework.dll
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\EntityFramework.xml
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\obj\Debug\DataModel.csprojAssemblyReference.cache
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\obj\Debug\DataModel.csproj.CopyComplete
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\obj\Debug\DataModel.dll
+C:\Users\m-add\source\repos\FrisFoodBV\DataModel\obj\Debug\DataModel.pdb

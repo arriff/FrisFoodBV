@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FrisFoodModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="producten">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="product_naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="product_merk" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="product_afmeting" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="product_gewicht" Type="Int32" />
+    <NavigationProperty Name="voorraads" Relationship="Self.FK_vestigingsvoorraad_producten" FromRole="producten" ToRole="voorraad" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="vestigingen">
+    <Key>
+      <PropertyRef Name="vestiging_id" />
+    </Key>
+    <Property Name="vestiging_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="vestiging_naam" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="locatie" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telefoonnummer" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="voorraads" Relationship="Self.FK_vestigingsvoorraad_vestigingen" FromRole="vestigingen" ToRole="voorraad" />
+  </EntityType>
+  <EntityType Name="voorraad">
+    <Key>
+      <PropertyRef Name="vestiging_id" />
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="vestiging_id" Type="Int32" Nullable="false" />
+    <Property Name="product_id" Type="Int32" Nullable="false" />
+    <Property Name="aantal" Type="Int32" />
+    <NavigationProperty Name="producten" Relationship="Self.FK_vestigingsvoorraad_producten" FromRole="voorraad" ToRole="producten" />
+    <NavigationProperty Name="vestigingen" Relationship="Self.FK_vestigingsvoorraad_vestigingen" FromRole="voorraad" ToRole="vestigingen" />
+  </EntityType>
+  <Association Name="FK_vestigingsvoorraad_producten">
+    <End Role="producten" Type="Self.producten" Multiplicity="1" />
+    <End Role="voorraad" Type="Self.voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="producten">
+        <PropertyRef Name="product_id" />
+      </Principal>
+      <Dependent Role="voorraad">
+        <PropertyRef Name="product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_vestigingsvoorraad_vestigingen">
+    <End Role="vestigingen" Type="Self.vestigingen" Multiplicity="1" />
+    <End Role="voorraad" Type="Self.voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vestigingen">
+        <PropertyRef Name="vestiging_id" />
+      </Principal>
+      <Dependent Role="voorraad">
+        <PropertyRef Name="vestiging_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FrisFoodEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="productens" EntityType="Self.producten" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="vestigingens" EntityType="Self.vestigingen" />
+    <EntitySet Name="voorraads" EntityType="Self.voorraad" />
+    <AssociationSet Name="FK_vestigingsvoorraad_producten" Association="Self.FK_vestigingsvoorraad_producten">
+      <End Role="producten" EntitySet="productens" />
+      <End Role="voorraad" EntitySet="voorraads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_vestigingsvoorraad_vestigingen" Association="Self.FK_vestigingsvoorraad_vestigingen">
+      <End Role="vestigingen" EntitySet="vestigingens" />
+      <End Role="voorraad" EntitySet="voorraads" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

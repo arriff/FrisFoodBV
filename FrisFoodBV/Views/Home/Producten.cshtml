@@ -1,0 +1,24 @@
+﻿@model List<FrisFoodBV.Models.ProductModel>
+@{
+    ViewBag.Title = "Producten";
+}
+
+<br />
+<table border="1">
+    <tr>
+        <th>product_id</th>
+        <th>product_naam</th>
+        <th>product_merk</th>
+        <th>vestiging</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+    <tr>
+        <td>@product.Id</td>
+        <td>@product.Naam</td>
+        <td>@product.Merk</td>
+        <td>@Html.ActionLink("vestigingen", "ProductPerVestiging", new { productId = product.Id })</td>
+    </tr>
+    }
+
+</table>
