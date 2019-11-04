@@ -1,0 +1,34 @@
+﻿@using FrisFoodBV.Models;
+@model dynamic
+@{
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    ViewBag.Title = "Products";
+
+}
+
+<br />
+<table border="1">
+    <tr>
+        <th>product_id</th>
+        <th>product_naam</th>
+        <th>product_merk</th>
+        <th>vestiging</th>
+        <th>Modify</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (ProductModel product in Model.products)
+    {
+<tr>
+    <td>@product.Id</td>
+    <td>@product.Naam</td>
+    <td>@product.Merk</td>
+    <td>@Html.ActionLink("Stock", "Stock", "Products", new { productId = product.Id }, null)</td>
+    <td>@Html.ActionLink("Update", "Update", "Products", new { productId = product.Id }, null)</td>
+    <td>@Html.ActionLink("Delete", "Remove", "Products", new { productId = product.Id }, null)</td>
+
+</tr>
+    }
+</table>
+
+@Html.ActionLink("Add", "Add", "Products")

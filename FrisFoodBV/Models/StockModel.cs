@@ -13,4 +13,6 @@ namespace FrisFoodBV.Models
         public int VoorraadAantal { get; set; }
 
     }
+
+
 }

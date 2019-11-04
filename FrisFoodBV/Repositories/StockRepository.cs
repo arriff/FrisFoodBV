@@ -11,7 +11,7 @@ namespace FrisFoodBV.Repositories
     {
         FrisFoodEntities context = new FrisFoodEntities();
 
-        public List<StockModel> GetAllStock()
+        public List<StockModel> GetStock()
         {
             return context.voorraads.Select(v => new StockModel
             {
@@ -22,10 +22,22 @@ namespace FrisFoodBV.Repositories
         }
         public List<StockModel> GetStock(int productID)
         {
-           var totaleVoorraad = GetAllStock();
+           var totaleVoorraad = GetStock();
 
             return totaleVoorraad.Where(a => a.ProductId == productID).ToList();
         }
 
-}
+        public int GetProductStockById(int productID)
+        {
+            var totaleVoorraad = GetStock();
+            var productSelect = totaleVoorraad.Where(s => s.ProductId == productID);
+            var productStock = 0;
+            foreach (var product in productSelect)
+            {
+                productStock = +product.VoorraadAantal;
+            }
+            return productStock;
+        }
+
+    }
 }

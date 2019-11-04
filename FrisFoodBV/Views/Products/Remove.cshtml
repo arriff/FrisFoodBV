@@ -1,0 +1,13 @@
+﻿@model FrisFoodBV.Models.ProductModel
+
+@using (Html.BeginForm("Remove", "Products"))
+{
+        @Html.HiddenFor(m => m.Id)
+        @Html.LabelFor(m => m.Naam)
+        @Html.TextBoxFor(m => m.Naam)
+
+        @Html.LabelFor(m => m.Merk)
+        @Html.TextBoxFor(m => m.Merk)
+
+    <button type="submit">Remove</button>
+}
